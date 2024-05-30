@@ -33,11 +33,13 @@ http
         }
 
         // Send Response to Client
-        res.statusCode = success ? 200 : 500
-        Object
-            .entries(headers)
-            .forEach(([k, v]) => res.setHeader(k, v))
-        res.end(body)
+        if (!res.closed) {
+            res.statusCode = success ? 200 : 500
+            Object
+                .entries(headers)
+                .forEach(([k, v]) => res.setHeader(k, v))
+            res.end(body)
+        }
 
         // Log Request
         Log('http', `${success ? '🟢' : '🔴'} ${res.statusCode} - ${req.url} (${Date.now() - T}ms)`)

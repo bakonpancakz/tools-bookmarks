@@ -65,6 +65,7 @@ WEB_ROUTES.push({
                 // Delete Temporary File
                 fileReader.pipe(res).once('finish', () => {
                     fs.unlink(videoPath, () => { })
+                    done({})
                 })
             } else {
                 // FFMPEG Process Crashed. Collect Logs for User
