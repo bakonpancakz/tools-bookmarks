@@ -41,7 +41,7 @@ WEB_ROUTES.push({
         if (videoStream && withVideo) args.push(
             '-i', videoStream.url,
             '-c:v', 'copy',
-            '-c:a', (audioStream.container === 'webm' ? 'opus' : 'mp3')
+            '-c:a', (audioStream.container === 'webm' ? 'libopus' : 'mp3')
         )
         args.push('-y', videoPath)
 
